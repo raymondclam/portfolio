@@ -1,3 +1,78 @@
+<style>
+  /* This is the default "Light" look */
+  body {
+    background-color: white;
+    color: black;
+    transition: 0.5s; /* This makes the color change look smooth */
+    font-family: sans-serif;
+    padding: 50px;
+  }
+
+  /* This is what happens when Dark Mode is ON */
+  .dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+
+  button {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+
+  button {
+  font-size: 24px;     /* Makes the icon bigger */
+  background: none;    /* Removes the ugly grey box */
+  border: 2px solid;   /* Adds a nice outline */
+  border-radius: 50%;  /* Makes the button a perfect circle */
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* A nice professional blue */
+  color: white;
+  text-decoration: none;     /* Removes the underline */
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.contact-link:hover {
+  background-color: #0056b3; /* Darker blue when you hover over it */
+}
+
+</style>
+
+<body>  
+    
+<button id="theme-btn" onclick="toggleDarkMode()">☀️</button>
+
+</body>
+
+<script>
+  function toggleDarkMode() {
+    // 1. Flip the background colors
+    document.body.classList.toggle("dark-mode");
+    
+    // 2. Find our button by its "name" (id)
+    const btn = document.getElementById("theme-btn");
+
+    // 3. Change the icon based on the mode
+    if (document.body.classList.contains("dark-mode")) {
+      btn.innerHTML = "🌙"; // Show moon in dark mode
+    } else {
+      btn.innerHTML = "☀️"; // Show sun in light mode
+    }
+  }
+</script>
+
 <h1>Hi, I'm Raymond Lam</h1>
 
 <p>I am learning to build cool things with AI and code.</p>
+
+<hr> <h2>Get In Touch</h2>
+<p>I am looking for new opportunities! Feel free to reach out:</p>
+<a href="mailto:raymondc.lam@gmail.com" class="contact-link">📧 Email Me</a>
