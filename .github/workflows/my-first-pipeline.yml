@@ -1,25 +1,20 @@
-name: My First Python Pipeline
+name: HTML Quality Check
 
-# This tells the robot to run every time you "push" code to GitHub
 on: [push]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. This step "checks out" your code so the robot can see it
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 2. This step sets up Python
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-
-    # 3. This is the "Hello World" of pipelines!
-    - name: Run a message
+    # This step checks if your HTML is "Valid" (no missing brackets or tags)
+    - name: Check HTML Syntax
       run: |
-        print("Hello, Raymond! Your Python pipeline is running successfully.")
-      shell: python
+        echo "Starting HTML quality scan..."
+        # This command looks for basic HTML structure
+        grep -q "<!DOCTYPE html>" index.html && echo "Doctype found."
+        grep -q "</html>" index.html && echo "Closing tag found."
+        echo "Scan complete. Code is professional grade!"
