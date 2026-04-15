@@ -1,20 +1,20 @@
-name: HTML Quality Check
+name: HTML Quality & Data Analysis
 
 on: [push]
 
 jobs:
-  lint:
+  analyze:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # This step checks if your HTML is "Valid" (no missing brackets or tags)
-    - name: Check HTML Syntax
-      run: |
-        echo "Starting HTML quality scan..."
-        # This command looks for basic HTML structure
-        grep -q "<!DOCTYPE html>" index.html && echo "Doctype found."
-        grep -q "</html>" index.html && echo "Closing tag found."
-        echo "Scan complete. Code is professional grade!"
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    # This is the new part! The robot will run your script
+    - name: Run Site Analytics
+      run: python analyze_site.py
