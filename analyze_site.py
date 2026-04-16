@@ -1,19 +1,24 @@
 import os
 
 def analyze_html():
-    # This now looks for ANY .html file in your folder
     html_files = [f for f in os.listdir('.') if f.endswith('.html')]
     
-    print("--- Portfolio Data Report ---")
+    print("--- 🤖 AI SITE AUDIT REPORT ---")
     for file_path in html_files:
         with open(file_path, 'r') as f:
             content = f.read()
-            div_count = content.count('<div')
-            btn_count = content.count('<button')
-            print(f"File: {file_path} | Sections: {div_count} | Buttons: {btn_count}")
-    
-    print("Status: Multi-page analysis complete!")
-    print("-----------------------------")
+            img_count = content.count('<img')
+            alt_count = content.count('alt=')
+            
+            print(f"File: {file_path}")
+            print(f" - Images found: {img_count}")
+            print(f" - SEO-Friendly Alts: {alt_count}")
+            
+            if img_count > alt_count:
+                print(f" ⚠️ WARNING: Missing {img_count - alt_count} alt tags!")
+            else:
+                print(" ✅ SEO Status: Excellent")
+            print("-" * 30)
 
 if __name__ == "__main__":
     analyze_html()
