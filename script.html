@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Northwest - Sitcom Script</title>
+    <title>Northwest - Script Room</title>
     <style>
-        body { font-family: 'Courier New', Courier, monospace; background-color: #f4f4f4; padding: 50px; }
-        .script-container { background: white; padding: 40px; border: 1px solid #ddd; max-width: 800px; margin: auto; }
-        h1 { text-align: center; color: #333; }
-        .dialogue { font-weight: bold; margin-top: 15px; }
+        /* This makes it look like a professional script */
+        body {
+            background-color: #f4f4f9; /* Soft grey background */
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            padding: 50px;
+            color: #333;
+        }
+        .script-container {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid #005a9c; /* Seattle Blue accent */
+            min-height: 100vh;
+        }
+        pre {
+            white-space: pre-wrap; /* Keeps lines from running off the page */
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        h1 {
+            text-align: center;
+            font-family: sans-serif;
+            color: #005a9c;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
+
     <div class="script-container">
         <h1>NORTHWEST</h1>
-        <h3>A Prequel Series</h3>
         <hr>
-        <p><strong>SCENE: THE FINALE MONTAGE</strong></p>
-        <p>LAWRENCE is packing his bags. He looks at a photo of him, CHAD, DEREK, and TERRY at the Howard Homecoming.</p>
-        
-        <p class="dialogue">CHAD</p>
-        <p>You really doing this? Leaving the "Northwest" for the big city?</p>
-        
-        <p class="dialogue">LAWRENCE</p>
-        <p>Georgetown is calling, man. Besides, someone has to show those D.C. boys how we do it in Seattle.</p>
+        <pre id="script-content">Loading the soul of Seattle...</pre>
     </div>
+
+    <script>
+      fetch('northwest_script.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('script-content').textContent = data;
+        });
+    </script>
+    
 </body>
 </html>
